@@ -10,7 +10,8 @@
             </canvas>
             <!-- End Of Main Application -->
                 </div>
-                <h2 style="text-align: center;"> Biểu đồ Doanh thu năm 2020</h2>
+                <h2 style="text-align: center;"> 
+Revenue Chart for 2020</h2>
             </div>
 
         </div>
@@ -28,7 +29,7 @@
         var myChart = new Chart(reportChart, {
         type: 'bar',
         data: {
-            labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12',],
+            labels: ['January', 'Feb', 'March', 'April', 'May', 'June','July','Augest','September','October','November ','December',],
             datasets: [{
                 label: '',
                 data: [month1, 190, 130, 50, 200, 350,100,500,400,240,1000,1400],

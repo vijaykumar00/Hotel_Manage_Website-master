@@ -1,19 +1,19 @@
 <?php 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Food;
-use App\CategoryFood;
+use App\food;
+use App\category_food;
 class FoodController extends Controller
 {
     public function getFood()
     {
-        $food=Food::all();
+        $food=food::all();
         return view('admin.food.list',['food'=>$food]);
     }
     public function Edit($id)
     {
-        $categoryFood=CategoryFood::all();
-        $food=Food::find($id);
+        $categoryFood=category_food::all();
+        $food=food::find($id);
         return view('admin.food.edit',['food'=>$food,'categoryFood'=>$categoryFood]);
     }
     public function EditPost(Request $request,$id)
@@ -27,14 +27,14 @@ class FoodController extends Controller
             
         ],
         [   
-            'name.required'=>"Bạn chưa nhập tên món ăn",
-            'description.required'=>"Bạn chưa nhập miêu tả món ăn",
-            'price.required'=>"Bạn chưa nhập giá",
+            'name.required'=>"name is required",
+            'description.required'=>"enter the description",
+            'price.required'=>"price is required",
 
            
         ]);
         
-        $food=Food::find($id);
+        $food=food::find($id);
         $food->name=$request->name;
         $food->description=$request->description;
         $food->price=$request->price;
@@ -45,13 +45,13 @@ class FoodController extends Controller
         $food->save(); 
 
 
-        return redirect('admin/food/list')->with('annoucement','Sửa thông tin món ăn thành công');
+        return redirect('admin/food/list')->with('annoucement','Edit successful dish information');
       
     }
 
     public function Add()
     {
-        $categoryFood=CategoryFood::all();
+        $categoryFood=category_food::all();
         return view('admin.food.add',['categoryFood'=>$categoryFood]);
     }
     public function AddPost(Request $request)
@@ -65,33 +65,34 @@ class FoodController extends Controller
             
         ],
         [   
-            'name.required'=>"Bạn chưa nhập tên món ăn",
-            'description.required'=>"Bạn chưa nhập miêu tả món ăn",
-            'price.required'=>"Bạn chưa nhập giá",
+            'name.required'=>"name is requird",
+            'description.required'=>"enter the description",
+            'price.required'=>"enter the price",
 
            
         ]);
-        
-        $food=new Food;
-        $food->name=$request->link;
-        $food->description=$request->caption;
-        $food->price=$request->link;
-        $food->idCategory=$request->idCategory;
+        // dd($request->all());
+        $food=new food;
+        $food->name=$request->name;
+        $food->description=$request->description;
+        $food->price=$request->price;
+        $food->idCategory=$request->idCategry;
       
        
     
         $food->save(); 
 
 
-        return redirect('admin/food/list')->with('annoucement','Thêm món ăn thành công');
+        return redirect('admin/food/list')->with('annoucement','Add a successful dish');
       
       
     }
     public function Delete($id)
     {
-        $food=Food::find($id);
+        $food=food::find($id);
         $food->delete();
-        return redirect('admin/food/list')->with('annoucement','Xóa món ăn thành công');
+        return redirect('admin/food/list')->with('annoucement','
+        Successfully deleted the dish');
      }
 
 }   

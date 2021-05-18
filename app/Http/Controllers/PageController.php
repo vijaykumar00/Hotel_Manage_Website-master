@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Information;
+use App\information;
 use App\About;
-use App\CategoryRoom;
-use App\Description;
-use App\Slide;
-use App\CategoryFood;
+use App\category_room;
+use App\description;
+use App\slide;
+use App\category_food;
 use App\Review;
-use App\Event;
-use App\Reservation;
-use App\Room;
+use App\event;
+use App\reservation;
+use App\room;
 use App\User;
-use App\DetailBill;
-use App\Food;
+use App\details_bill;
+use App\food;
 use App\Repositories\CategoryFood\CategoryFoodInterface;
 use App\Builder\PageBuilder;
 class PageController extends Controller
@@ -75,7 +75,7 @@ class PageController extends Controller
     // }
     public function Home()
     {
-        $food_category=CategoryFood::all();
+        $food_category=category_food::all();
         $food_category=$this->category_food->GetAll();
         //return $this->builder->getInfor();
     	$review=Review::all();
@@ -98,15 +98,14 @@ class PageController extends Controller
     }
     public function Reservation($idCate)
     {
-        
         return view('pages.Reservation',['idCate'=>$idCate]);
     }
     public function postReservation(Request $request)
     {
-        $room=Room::where('Status',1)->where('idCategory',$request->room)->get();
+        $room=room::where('Status',1)->where('idCategory',$request->room)->get();
         if (count($room)>0) 
         {
-            $roomtaken=Room::where('Status',1)->where('idCategory',$request->room)->take(1)->get();
+            $roomtaken=room::where('Status',1)->where('idCategory',$request->room)->take(1)->get();
             
             $this->validate($request,
             [
@@ -118,15 +117,14 @@ class PageController extends Controller
                 'numbers'=>'required'
             ],
             [
-                'name.required'=>"Bạn chưa nhập tên",
-                'email.required'=>"Bạn chưa nhập email",
-                'phone.required'=>"Bạn chưa nhập số điện thoại",
-                'datein.required'=>"Bạn chưa nhập ngày đến",
-                'dateout.required'=>"Bạn chưa nhập ngày đi",
-                'numbers.required'=>"Bạn chưa nhập số lượng",
-
+                'name.required'=>"You have not entered a name",
+                'email.required'=>"You have not entered email",
+                'phone.required'=>"You did not enter a phone number",
+                'datein.required'=>"You have not entered a date of arrival",
+                'dateout.required'=>"You have not entered a date",
+                'numbers.required'=>"You did not enter a number",
             ]);
-            $reservation=new Reservation;
+            $reservation=new reservation;
             $reservation->name=$request->name;    
             $reservation->email=$request->email; 
             $reservation->phone=$request->phone; 
@@ -140,19 +138,19 @@ class PageController extends Controller
 
             $reservation->save();
 
-            $r=Room::find($reservation->idRoom);
-            $cate=CategoryRoom::find($r->idCategory);
+            $r=room::find($reservation->idRoom);
+            $cate=category_room::find($r->idCategory);
            
             $day= (strtotime($reservation->DateOut) - strtotime($reservation->DateIn))/60/60/24;
-            $bill=new DetailBill;
-            $bill->content='Tiền phòng';
+            $bill=new details_bill;
+            $bill->content='Room charge';
             $bill->price= $cate->price*$day;
             $bill->idReservation=$reservation->id;
             $bill->created_at=$request->dateout;
             $bill->save();  
-            return redirect('reservation/{1}')->with('annoucement','Đặt chỗ thành công.Phòng của bạn là '.$roomtaken[0]->name .'  .See you soon !');
+            return redirect('reservation/{1}')->with('annoucement','Your reservation is successful. Your room is '.$roomtaken[0]->name .'  .See you soon !');
         }
-        else return redirect('reservation/{1}')->with('annoucement','Loại phòng bạn đặt đã hết. Vui lòng tham khảo các loại phòng còn lại trong hệ thống khách sạn. Xin cảm ơn !');
+        else return redirect('reservation/{1}')->with('annoucement','The room type you booked has run out. Please refer to the remaining room types in the hotel system. Thank you !');
     }
 
 }

@@ -17,8 +17,6 @@
             <ul class="list-unstyled link">
               <li><a href="about">About Us</a></li>
               <li><a href="rooms">The Rooms &amp; Suites</a></li>
-              
-             
             </ul>
           </div>
           <div class="col-md-3 mb-5">
@@ -40,16 +38,16 @@
         <div class="row pt-5">
           <p class="col-md-6 text-left">
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | 
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           </p>
             
           <p class="col-md-6 text-right social">
-            <a href="https://www.facebook.com/huynhtan.duy.988"><span class="fa fa-tripadvisor"></span></a>
+            <!-- <a href="https://www.facebook.com/huynhtan.duy.988"><span class="fa fa-tripadvisor"></span></a>
             <a href="https://www.facebook.com/huynhtan.duy.988"><span class="fa fa-facebook"></span></a>
             <a href="https://www.facebook.com/huynhtan.duy.988"><span class="fa fa-twitter"></span></a>
             <a href="https://www.facebook.com/huynhtan.duy.988"><span class="fa fa-linkedin"></span></a>
-            <a href="https://www.facebook.com/huynhtan.duy.988"><span class="fa fa-vimeo"></span></a>
+            <a href="https://www.facebook.com/huynhtan.duy.988"><span class="fa fa-vimeo"></span></a> -->
           </p>
         </div>
       </div>

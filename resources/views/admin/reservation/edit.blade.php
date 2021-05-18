@@ -32,20 +32,20 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            
                             <div class="form-group">
-                                <label>Tên phòng </label>
+                                <label>Room name </label>
                                 <select class="form-control" name="idRoom">
-                                    <label>Tên phòng</label>
+                                    <label>Room name</label>
                                     @foreach ($room as $r)
                                     <option value="{{$r->id}}" @if ($r->id==$reservation->idRoom) {{"selected"}} @endif > {{$r->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Họ tên khách hàng</label>
+                                <label>customer's full name</label>
                                 <input class="form-control" name="name" placeholder="Please Enter Price" value="{{$reservation->name}}" />
                             </div>
                             <div class="form-group">
-                                <label>Số điện thoại</label>
+                                <label>phone number</label>
                                 <input class="form-control" name="phone" placeholder="Please Enter Price" value="{{$reservation->phone}}" />
                             </div>
                             <div class="form-group">
@@ -53,15 +53,16 @@
                                 <input class="form-control" name="email" placeholder="Please Enter Price" value="{{$reservation->email}}" />
                             </div>
                             <div class="form-group">
-                                <label>Ngày đến: {{$reservation->DateIn}} </label>
+                                <label>Arrival date: {{$reservation->DateIn}} </label>
                                 <input type="date" class="form-control" name="DateIn" placeholder="Please Enter Price" value="{{$reservation->DateIn}}" />
                             </div>
                             <div class="form-group">
-                                <label>Ngày đi: {{$reservation->DateOut}}</label>
+                                <label>
+Days to go: {{$reservation->DateOut}}</label>
                                 <input type="date" class="form-control" name="DateOut" placeholder="Please Enter Price" value="{{$reservation->DateOut}}" />
                             </div>
                             <div class="form-group">
-                                <label>Số lượng</label>
+                                <label>Amount</label>
                                 <input class="form-control" name="Numbers" placeholder="Please Enter Price" value="{{$reservation->Numbers}}" />
                             </div>
                             <div class="form-group">

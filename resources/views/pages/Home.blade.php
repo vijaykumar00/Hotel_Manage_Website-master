@@ -76,7 +76,6 @@
                   
                     @if ($i==1 )
                      <div class="col-md-6"> @endif
-
                           <div class="food-menu mb-5">
                               <span class="d-block text-primary h4 mb-3">${{$f->price}}</span>
                               <h3 class="text-white"><a href="#" class="text-white">{{$f->name}}</a></h3>

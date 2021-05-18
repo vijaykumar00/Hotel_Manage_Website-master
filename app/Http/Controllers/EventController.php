@@ -1,17 +1,17 @@
 <?php 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Event;
+use App\event;
 class EventController extends Controller
 {
 	public function getEvent()
 	{
-		$event=Event::all();
+		$event=event::all();
 		return view('admin.event.list',['event'=>$event]);
 	}
 	public function Edit($id)
 	{
-		$event=Event::find($id);
+		$event=event::find($id);
 		return view('admin.event.edit',['event'=>$event]);
 	}
 	public function EditPost(Request $request,$id)
@@ -25,16 +25,17 @@ class EventController extends Controller
             
         ],
         [   
-            'name.required'=>"Bạn chưa nhập tên sự kiện",
-            'body.required'=>"Bạn chưa nhập nội dung",
-            'image.required'=>"Bạn chưa nhập image",
+            'name.required'=>"name is required",
+            'body.required'=>"
+            You did not enter content",
+            'image.required'=>"You did not enter image",
             
             
            
 
         ]);
         
-        $event=Event::find($id);
+        $event=event::find($id);
         
        $event->name=$request->name;
         $event->body=$request->body;
@@ -44,7 +45,8 @@ class EventController extends Controller
         $event->save(); 
 
 
-        return redirect('admin/event/list')->with('annoucement','Sửa thông tin event thành công');
+        return redirect('admin/event/list')->with('annoucement','
+        Successfully edited event information');
       
 	}
 
@@ -62,28 +64,29 @@ class EventController extends Controller
             
         ],
         [   
-            'name.required'=>"Bạn chưa nhập tên sự kiện",
-            'body.required'=>"Bạn chưa nhập nội dung",
-            'image.required'=>"Bạn chưa nhập image",
+            'name.required'=>"name is requird",
+            'body.required'=>"enter the content",
+            'image.required'=>"You did not enter image",
            
         ]);
-
-        $event=new Event;
+// dd($request->all());
+        $event=new event;
         $event->name=$request->name;
         $event->body=$request->body;
-        $event->image="images/" . $request->image->getClientOriginalName();
+        $event->image="images/" . $request->image;
        
     
         $event->save(); 
 
 
-        return redirect('admin/event/list')->with('annoucement','Thêm event thành công');
+        return redirect('admin/event/list')->with('annoucement','
+        Successfully added event');
     }
     public function Delete($id)
     {
-        $event=Event::find($id);
+        $event=event::find($id);
         $event->delete();
-         return redirect('admin/event/list')->with('annoucement','Xóa event thành công');
+         return redirect('admin/event/list')->with('annoucement','Successfully deleted the event');
      }
 
 }	

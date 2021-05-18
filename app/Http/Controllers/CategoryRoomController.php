@@ -1,19 +1,19 @@
 <?php 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Room;
-use App\CategoryRoom;
+use App\room;
+use App\category_room;
 class CategoryRoomController extends Controller
 {
 	public function getRoom()
 	{
-		$room=CategoryRoom::all();
+		$room=category_room::all();
 		return view('admin.room_category.list',['category_room'=>$room]);
 	}
 	public function Edit($id)
 	{
         //$categoryRoom=CategoryRoom::all();
-		$room=CategoryRoom::find($id);
+		$room=category_room::find($id);
 		return view('admin.room_category.edit',['category_room'=>$room]);
 	}
 
@@ -29,13 +29,13 @@ class CategoryRoomController extends Controller
         ],
         [   
             
-            'name.required'=>"Bạn chưa nhập tên loại phòng",
-            'price.required'=>"Bạn chưa nhập giá loại phòng",
-            'description.required'=>"Bạn chưa nhập mô tả loại phòng",
+            'name.required'=>"You have not entered a room type name",
+            'price.required'=>"You have not entered a room type rate",
+            'description.required'=>"You have not entered a room type description",
            
         ]);
         
-        $room=CategoryRoom::find($id);
+        $room=category_room::find($id);
        // $room->link=$request->link;
         $room->name=$request->name;
         $room->price=$request->price;
@@ -47,13 +47,13 @@ class CategoryRoomController extends Controller
         $room->save(); 
 
 
-        return redirect('admin/category_room/list')->with('annoucement','Sửa thông tin room thành công');
+        return redirect('admin/category_room/list')->with('annoucement','Successfully edited room information');
       
 	}
 
     public function Add()
     {
-        $categoryRoom=CategoryRoom::all();
+        $categoryRoom=category_room::all();
         return view('admin.room_category.add',['categoryRoom'=>$categoryRoom]);
     }
     public function AddPost(Request $request)
@@ -69,14 +69,14 @@ class CategoryRoomController extends Controller
         ],
         [   
             
-            'name.required'=>"Bạn chưa nhập tên loại phòng",
-            'price.required'=>"Bạn chưa nhập giá loại phòng",
-            'description.required'=>"Bạn chưa nhập mô tả loại phòng",
-            'image.required'=>"Bạn chưa nhập ảnh",
+            'name.required'=>"Name is required",
+            'price.required'=>"price is required",
+            'description.required'=>"description is required",
+            'image.required'=>"image is required",
            
         ]);
         
-        $room=new CategoryRoom;
+        $room=new category_room;
        // $room->link=$request->link;
         $room->name=$request->name;
         $room->price=$request->price;
@@ -88,15 +88,16 @@ class CategoryRoomController extends Controller
         $room->save(); 
 
 
-        return redirect('admin/category_room/list')->with('annoucement','thêm loại phòng thành công');
+        return redirect('admin/category_room/list')->with('annoucement','
+        added room type successfully');
       
       
     }
     public function Delete($id)
     {
-        $room=CategoryRoom::find($id);
+        $room=category_room::find($id);
         $room->delete();
-        return redirect('admin/category_room/list')->with('annoucement','Xóa loại phòng thành công');
+        return redirect('admin/category_room/list')->with('annoucement','Room type deleted successfully');
      }
 
 }	

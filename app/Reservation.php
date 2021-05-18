@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reservation extends Model
+class reservation extends Model
 {
-    //
-    protected $table="reservation";
+    protected $table="reservations";
     public $timestamps = false;
     public function getRoom()
     {

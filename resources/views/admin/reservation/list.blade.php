@@ -21,13 +21,15 @@
                         <thead>
                             <tr align="center">
                                 {{-- <th>ID</th> --}}
-                                <th>Tên phòng</th>
-                                <th>Họ tên khách hàng</th>
-                                <th>Số điện thoại</th>
+                                <th>Room name</th>
+                                <th>customer's full name</th>
+                                <th>phone number</th>
                                 <th>Email</th>
-                                <th>Ngày đến</th>
-                                <th>Ngày đi</th>
-                                <th>Số lượng</th>
+                                <th>
+Arrival date</th>
+                                <th>Days to go</th>
+                                <th>
+Amount</th>
                                 {{-- <th>Notes</th> --}}
                                 <th>Edit</th>
                                 
@@ -52,7 +54,7 @@
                                    
                                     <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/reservation/edit/{{$r->id}}">Edit</a></td>
                                     <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/bill/list/{{$r->id}}"> View details</a></td>
-                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/reservation/delete/{{$r->id}}" onclick="return confirm('Bạn có chắc muốn xóa ?');"> Delete</a></td>
+                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/reservation/delete/{{$r->id}}" onclick="return confirm('are you sure you want to delete ?');"> Delete</a></td>
                                     
                                     
                                 </tr>

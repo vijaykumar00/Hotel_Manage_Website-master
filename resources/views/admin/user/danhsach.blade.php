@@ -41,7 +41,7 @@
                                 </td>
                                 
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/user/edit/{{$us->id}}">Edit</a></td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return confirm('Bạn có chắc muốn xóa ?');" href="admin/user/delete/{{$us->id}}"> Delete</a></td> 
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return confirm('are you sure you want to delete ?');" href="admin/user/delete/{{$us->id}}"> Delete</a></td> 
                                 
                             </tr>
                             @endforeach

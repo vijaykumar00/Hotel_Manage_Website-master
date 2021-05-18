@@ -38,17 +38,18 @@
                                 <input type="Password" class="form-control" name="password"  />
                             </div>
                             <div class="form-group">
-                                <label>Quyền</label>
+                                <label>Permission</label>
                                 @if ($user->type==0)
                                 <input disabled class="form-control" name="type" value="Admin" />
                                 @else
-                                <input disabled class="form-control" name="type" value="Nhân viên" />
+                                <input disabled class="form-control" name="type" value="
+Staff" />
                                 @endif
                             </div>
                            
                            
                             
-                            <button type="submit" class="btn btn-default">Sửa</button>
+                            <button type="submit" class="btn btn-default">Repair</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

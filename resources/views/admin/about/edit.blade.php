@@ -29,7 +29,7 @@
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
-                                <label>Nội dung miêu tả</label>
+                                <label>Descriptive content</label>
                                 <input class="form-control" name="body"  value="{{$about->body }}" />
                             </div>
                              <div class="form-group">

@@ -1,19 +1,20 @@
 <?php 
 namespace App\Http\Controllers;
+
+use App\category_room;
 use Illuminate\Http\Request;
 use App\Room;
-use App\CategoryRoom;
 class RoomController extends Controller
 {
 	public function getRoom()
 	{
-		$room=Room::all();
+		$room=room::all();
 		return view('admin.room.list',['room'=>$room]);
 	}
 	public function Edit($id)
 	{
-        $categoryRoom=CategoryRoom::all();
-		$room=Room::find($id);
+        $categoryRoom=category_room::all();
+		$room=room::find($id);
 		return view('admin.room.edit',['room'=>$room,'categoryRoom'=>$categoryRoom]);
 	}
 	public function EditPost(Request $request,$id)
@@ -34,7 +35,7 @@ class RoomController extends Controller
            
         ]);
         
-        $room=Room::find($id);
+        $room=room::find($id);
        // $room->link=$request->link;
         $room->name=$request->name;
         $room->idCategory=$request->idCategory;
@@ -51,7 +52,7 @@ class RoomController extends Controller
 
     public function Add()
     {
-        $categoryRoom=CategoryRoom::all();
+        $categoryRoom=category_room::all();
         return view('admin.room.add',['categoryRoom'=>$categoryRoom]);
     }
     public function AddPost(Request $request)
@@ -66,9 +67,9 @@ class RoomController extends Controller
         ],
         [   
             
-            'name.required'=>"Bạn chưa nhập tên phòng",
-            'idCategory.required'=>"Bạn chưa nhập loại phòng",
-            'status.required'=>"Bạn chưa nhập tình trạng phòng",
+            'name.required'=>"name is requird",
+            'idCategory.required'=>"You have not entered a room type",
+            'status.required'=>"You have not entered room status",
            
         ]);
         
@@ -82,16 +83,18 @@ class RoomController extends Controller
     
         $room->save(); 
 
-
-        return redirect('admin/room/list')->with('annoucement','thêm room thành công');
+// dd($room);
+        return redirect('admin/room/list')->with('annoucement','room added successfully');
       
       
     }
+    
     public function Delete($id)
     {
-        $room=Room::find($id);
+        $room=room::find($id);
         $room->delete();
-        return redirect('admin/room/list')->with('annoucement','Xóa room thành công');
+        return redirect('admin/room/list')->with('annoucement','
+        Room deleted successfully');
      }
 
 }	

@@ -21,9 +21,11 @@
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Tên phòng</th>
-                                <th>Loại phòng</th>
-                                <th>Tình trạng</th>
+                                <th>
+Room name</th>
+                                <th>
+Kind of room</th>
+                                <th>Status</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -40,13 +42,15 @@
                                      
                                     </td>
                                     <td>
-                                      @if ($r->Status==1) {{"Trống"}}
-                                      @else {{"Đã được đặt"}}
+                                      @if ($r->Status==1) {{"
+Empty"}}
+                                      @else {{"
+Reserved"}}
                                       @endif
                                     </td>
                                    
                                     <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/room/edit/{{$r->id}}">Edit</a></td>
-                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/room/delete/{{$r->id}}" onclick="return confirm('Bạn có chắc muốn xóa ?');"> Delete</a></td>
+                                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/room/delete/{{$r->id}}" onclick="return confirm('Are you sure you want to delete?');"> Delete</a></td>
                                     
                                 </tr>
                             @endforeach

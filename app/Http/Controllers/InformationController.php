@@ -1,17 +1,17 @@
 <?php 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Information;
+use App\information;
 class InformationController extends Controller
 {
 	public function getInformation()
 	{
-		$information=Information::all();
+		$information=information::all();
 		return view('admin.information.list',['information'=>$information]);
 	}
 	public function edit()
 	{
-		$information=Information::find(0);
+		$information=information::find(0);
 		return view('admin.information.edit',['information'=>$information]);
 	}
 	public function editPost(Request $request)
@@ -26,16 +26,17 @@ class InformationController extends Controller
             
         ],
         [
-            'name.required'=>"Bạn chưa nhập tên",
-            'email.required'=>"Bạn chưa nhập email",
-            'phone_number.required'=>"Bạn chưa nhập số điện thoại",
-            'slogan.required'=>"Bạn chưa nhập slogan",
-            'address.required'=>"Bạn chưa nhập địa chỉ",
+            'name.required'=>"name is requird",
+            'email.required'=>"enter the email",
+            'phone_number.required'=>"enter the phoone number",
+            'slogan.required'=>"You have not entered a slogan",
+            'address.required'=>"
+            You do not enter an address",
            
 
         ]);
         
-        $information=Information::find(0);
+        $information=information::find(0);
         $information->name=$request->name;
         $information->email=$request->email;
         $information->phone_number=$request->phone_number;
@@ -44,7 +45,8 @@ class InformationController extends Controller
         $information->save(); 
 
 
-        return redirect('admin/information/list')->with('annoucement','Sửa thông tin khách sạn thành công');
+        return redirect('admin/information/list')->with('annoucement','
+        Successfully edited hotel information');
       
 	}
 }	

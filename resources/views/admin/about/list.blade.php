@@ -20,7 +20,7 @@
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
-                                <th>Nội dung miêu tả</th>
+                                <th>Descriptive content</th>
                                 <th>Image</th>
                                 <th>Video</th>
                                 

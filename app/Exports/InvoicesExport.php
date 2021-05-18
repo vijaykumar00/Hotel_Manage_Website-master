@@ -4,8 +4,8 @@ namespace App\Exports;
 use App\Invoice;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
-use App\DetailBill;
-use App\Reservation;
+use App\details_bill;
+use App\reservation;
 class InvoicesExport implements FromView
 {	
 	public $view;
@@ -23,8 +23,8 @@ class InvoicesExport implements FromView
         // return view('admin.bill.invoice', [
         //     'invoices' => Invoice::all()
         // ]);
-        $bill= DetailBill::where('idReservation',$this->id)->get();
-        $reservation = Reservation::where('id',$this->id)->get();
+        $bill= details_bill::where('idReservation',$this->id)->get();
+        $reservation = reservation::where('id',$this->id)->get();
         return view('admin.bill.invoice')
         	   ->with('bill', $bill)
         	   ->with('reservation',$reservation);

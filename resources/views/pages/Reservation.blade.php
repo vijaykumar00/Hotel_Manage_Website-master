@@ -118,21 +118,14 @@
                     <input type="submit" value="Reserve Now" class="btn btn-primary text-white py-3 px-5 font-weight-bold">
                   </div>
                 </div>
-
-              
-
-              
-              
             </form>
-
           </div>
-
           <div class="col-md-5" data-aos="fade-up" data-aos-delay="200">
             <div class="row">
               <div class="col-md-10 ml-auto contact-info">
-                <p><span class="d-block">Room Available:</span> <span class="text-black" id="room-available"> A100 </span></p>
-                <p><span class="d-block">Price:</span> <span class="text-black" id="price"> 90$ </span></p>
-                <p><span class="d-block">Size:</span> <span class="text-black" id="size"> 1 people </span></p>
+                <p><span class="d-block">Room Available:</span> 
+                <p><span class="d-block" >Price:</span><span id="price" ></span>
+                <p><span class="d-block" >Size:</span><span id="size"></span>
               </div>
             </div>
           </div>
@@ -153,7 +146,7 @@
       var request = $.ajax({
                       url: "/api/getRoomAvailable/"+room.val() ,
                       method: "GET",
-                      //data: room.val()
+                      data: room.val()
                     });
       request
         .done(function(response){
@@ -163,7 +156,7 @@
             $('#size').text(response.category.size + " people");
           }
           else {
-            $('#room-available').text("HẾT PHÒNG");
+            $('#room-available').text("Out Of Room");
             $('#price').text("");
             $('#size').text("");
           }

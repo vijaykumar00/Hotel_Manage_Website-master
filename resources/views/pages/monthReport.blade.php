@@ -4,7 +4,7 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
-                <h2 style="text-align: center;"> Danh sách hóa đơn tháng 
+                <h2 style="text-align: center;">List of monthly bills
                     <select id="month">
                         @for ($i=1;$i<=12;$i++)
                         <option @if ($i==$idMonth) selected @endif >{{$i}}</option>
@@ -16,10 +16,12 @@
                 <thead>
                             <tr align="center">
                                 
-                                <th>Họ tên khách hàng</th>
-                                {{-- <th>Tên phòng</th> --}}
-                                <th>Tổng hóa đơn</th>
-                                <th>Ngày thanh toán</th>
+                                <th>
+customer's full name</th>
+                                {{-- <th>
+Room name</th> --}}
+                                <th>Total invoice</th>
+                                <th>Date of payment</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,7 +44,8 @@
             </canvas>
             <!-- End Of Main Application -->
                 </div>
-                <h2 style="text-align: center;"> Biểu đồ Doanh thu tháng {{$idMonth}}</h2>
+                <h2 style="text-align: center;"> 
+Monthly Revenue Chart {{$idMonth}}</h2>
             </div>
 
         </div>

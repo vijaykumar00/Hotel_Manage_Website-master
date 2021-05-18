@@ -1,17 +1,17 @@
 <?php 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\CategoryRoom;
-use App\Room;
-use App\Event;
-use App\Reservation;
-use App\DetailBill;
+use App\category_room;
+use App\room;
+use App\event;
+use App\reservation;
+use App\details_bill;
 use Illuminate\Support\Facades\Input;
 class ApiController extends Controller
 {
 	public function getRoomType()
     {
-        $data=CategoryRoom::all();
+        $data=category_room::all();
         return response()->json([
             'code' => '200',
             'data' => $data
@@ -24,7 +24,7 @@ class ApiController extends Controller
     }
     public function getNews()
     {
-        $data=Event::all();
+        $data=event::all();
         return response()->json([
             'code' => '200',
             'data' => $data
@@ -34,7 +34,7 @@ class ApiController extends Controller
     {
         $historyList = [];
             if ($request->has('email')){
-                $reservation = Reservation::where('email', $request->input('email'))->get();
+                $reservation = reservation::where('email', $request->input('email'))->get();
                 $properties = [];
                 foreach ($reservation as $array_item) {
                     if (!is_null($array_item['id'])) {
@@ -42,13 +42,13 @@ class ApiController extends Controller
                         $properties['idRoom'] = $array_item['idRoom'];
                         $properties['DateIn'] = $array_item['DateIn'];
                         $properties['DateOut'] = $array_item['DateOut'];
-                        $properties['status'] = $array_item['status'];
-                        $room = Room::where('id', $properties['idRoom'])->first();
+                        // $properties['status'] = $array_item['status'];
+                        $room = room::where('id', $properties['idRoom'])->first();
                         $properties['roomName'] = $room['name'];
                         $idCategory = $room['idCategory'];
-                        $properties['categoryRoomName'] = CategoryRoom::where('id', $idCategory)->first()['name'];
-                        $properties['image'] = CategoryRoom::where('id', $idCategory)->first()['image'];
-                        $properties['price'] = DetailBill::where('idReservation', $properties['id'])->first()['price'];
+                        $properties['categoryRoomName'] = category_room::where('id', $idCategory)->first()['name'];
+                        $properties['image'] = category_room::where('id', $idCategory)->first()['image'];
+                        $properties['price'] = details_bill::where('idReservation', $properties['id'])->first()['price'];
                     }
                 array_push($historyList, $properties);
             }
@@ -58,7 +58,7 @@ class ApiController extends Controller
             ]);
         }
         else {
-            $data = Reservation::all();
+            $data = reservation::all();
             return response()->json([
                 'code' => '200',
                 'data' => $data
@@ -72,7 +72,7 @@ class ApiController extends Controller
     public function getRoomAvailable(Request $request, $idroom)
     {   
         $numberRoom = $request->input('number');
-        $room=Room::where('Status',1)->where('idCategory',$idroom)->get();
+        $room=room::where('idCategory',$idroom)->get();
         if ($numberRoom && $numberRoom <= count($room)) {
             return response()->json([
                 'code' => '200',
@@ -81,15 +81,14 @@ class ApiController extends Controller
         } else {
             return response()->json([
                 'code' => '400',
-                'message' => 'Không còn đủ phòng để đặt, vui lòng quay lại sau!'
+                'message' => 'There is not enough room to reserve, please come back later!'
             ]);
         }
     }
 
     public function getMonthReportData($idMonth)
     {
-        $reservation=Reservation::where('status',1)
-                     ->whereMonth('DateOut',$idMonth)
+        $reservation=reservation::whereMonth('DateOut',$idMonth)
                      ->orderBy('DateOut','ASC')
                      ->get();
                    
@@ -103,12 +102,12 @@ class ApiController extends Controller
     {   
         $room_category = Input::get('room_category');
 
-        $room=Room::where('Status',1)->where('idCategory',$room_category)->get();
+        $room=room::where('idCategory',$room_category)->get();
         if (count($room)>0) 
         {
-            $roomtaken=Room::where('Status',1)->where('idCategory',$room_category)->take(1)->get();
+            $roomtaken=room::where('idCategory',$room_category)->take(1)->get();
             
-            $reservation=new Reservation;
+            $reservation=new reservation;
             $reservation->name=Input::get('name');    
             $reservation->email=Input::get('email'); 
             $reservation->phone=Input::get('phone'); 
@@ -122,12 +121,12 @@ class ApiController extends Controller
 
             
 
-            $r=Room::find($reservation->idRoom);
-            $cate=CategoryRoom::find($r->idCategory);
+            $r=room::find($reservation->room_id);
+            $cate=category_room::find($r->idCategory);
            
             $day= (strtotime($reservation->DateOut) - strtotime($reservation->DateIn))/60/60/24;
-            $bill=new DetailBill;
-            $bill->content='Tiền phòng';
+            $bill=new details_bill();
+            $bill->content='Room charge';
             $bill->price= $cate->price*$day;
             $bill->idReservation=$reservation->id;
             $bill->created_at=Input::get('dateOut');
@@ -138,14 +137,14 @@ class ApiController extends Controller
 
             return response()->json([
                 'code' => '200',
-                'message' => 'Đặt chỗ thành công.Phòng của bạn là '.$roomtaken[0]->name .'  .See you soon !',
+                'message' => 'Your reservation is successful. Your room is '.$roomtaken[0]->name .'  .See you soon !',
                 'data' => $reservation
             ]);  
             
         }
         else return response()->json([
                 'code' => '400',
-                'message' => 'Loại phòng bạn đặt đã hết. Vui lòng tham khảo các loại phòng còn lại trong hệ thống khách sạn. Xin cảm ơn !',
+                'message' => 'The room type you booked has run out. Please refer to the remaining room types in the hotel system. Thank you !',
              ]);   
 
             
@@ -153,12 +152,12 @@ class ApiController extends Controller
     public function Reservation(Request $request) {
         $numberRoom =$request->input('number');
         $room_category = Input::get('room_category');
-        $room=Room::where('Status',1)->where('idCategory',$room_category)->get();
+        $room=room::where('idCategory',$room_category)->get();
         $roomList = [];
         if ($numberRoom && $numberRoom <= count($room)) {
             for ($i=0; $i<$numberRoom; $i++) {
-                $roomtaken=Room::where('Status',1)->where('idCategory',$room_category)->take(1)->get();
-                $reservation=new Reservation;
+                $roomtaken=room::where('idCategory',$room_category)->take(1)->get();
+                $reservation=new reservation;
                 $reservation->name=Input::get('name');    
                 $reservation->email=Input::get('email'); 
                 $reservation->phone=Input::get('phone'); 
@@ -167,13 +166,13 @@ class ApiController extends Controller
                 $reservation->Numbers=Input::get('numbers'); 
                 $reservation->Notes=Input::get('note');
                 $reservation->idRoom=$roomtaken[0]->id;
-                $roomtaken[0]->Status=0;
+                // $roomtaken[0]->Status=0;
                 $reservation->save();
-                $r=Room::find($reservation->idRoom);
-                $cate=CategoryRoom::find($r->idCategory);
+                $r=Room::find($reservation->room_id);
+                $cate=category_room::find($r->idCategory);
                 $day= (strtotime($reservation->DateOut) - strtotime($reservation->DateIn))/60/60/24;
-                $bill=new DetailBill;
-                $bill->content='Tiền phòng';
+                $bill=new details_bill();
+                $bill->content='Room charge';
                 $bill->price= $cate->price*$day;
                 $bill->idReservation=$reservation->id;
                 $bill->created_at=Input::get('dateOut');
@@ -183,14 +182,15 @@ class ApiController extends Controller
             }
             return response()->json([
                 'code' => '200',
-                'message' => 'Đặt chỗ thành công.See you soon !',
+                'message' => '
+                Booking successful.See you soon !',
                 'data' => $reservation
             ]); 
 
         } else {
             return response()->json([
                 'code' => '400',
-                'message' => 'Không còn đủ phòng để đặt. Vui lòng thử lại sau!',
+                'message' => 'There is not enough room to book. Please try again later!',
                 'data' => $reservation
             ]); 
         }

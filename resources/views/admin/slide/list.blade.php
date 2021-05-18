@@ -21,7 +21,7 @@
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Link hình ảnh</th>
+                                <th>Image link</th>
                                 <th>Caption</th>
                                 
                                 <th>Edit</th>

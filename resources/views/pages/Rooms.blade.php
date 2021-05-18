@@ -31,7 +31,8 @@
         <div class="row justify-content-center text-center mb-5">
           <div class="col-md-7">
             <h2 class="heading" data-aos="fade">Great Offers</h2>
-            <p data-aos="fade">Chúng tôi mang đến cho bạn những sự lựa chọn phong phú nhất, sang trọng nhất, tiện nghi nhất với mức giá tuyệt vời nhất ! </p>
+            <p data-aos="fade">
+We bring you the richest choices, the most luxurious, the most comfortable at the best prices! </p>
           </div>
         </div>
         <?php $i=1; ?>

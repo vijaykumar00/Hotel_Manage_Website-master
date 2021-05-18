@@ -32,19 +32,21 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            
                             <div class="form-group">
-                                <label>Tên Event</label>
+                                <label>Event name</label>
                                 <input class="form-control" name="name" placeholder="Please Enter Event Name" />
                             </div>
                             <div class="form-group">
-                                <label>Nội dung</label>
+                                <label>
+content</label>
                                 <input class="form-control" name="body" placeholder="Please Enter Body" />
                             </div>
                             <div class="form-group">
-                                <label>Hình ảnh</label>
+                                <label>Picture</label>
                                 <input type="file" class="form-control" name="image" placeholder="Please Enter Image" />
                             </div>
                             
-                            <button type="submit" class="btn btn-default">Thêm </button>
+                            <button type="submit" class="btn btn-default">
+More </button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

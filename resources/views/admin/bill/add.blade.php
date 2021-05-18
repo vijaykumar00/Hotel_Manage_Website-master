@@ -33,16 +33,17 @@
                            
                            
                             <div class="form-group">
-                                <label>Nội dung</label>
+                                <label>content</label>
                                 <input class="form-control" name="content" placeholder="Please Enter Body" />
                             </div>
                              <div class="form-group">
-                                <label>Giá</label>
+                                <label>Price</label>
                                 <input class="form-control" name="price" placeholder="Please Enter Body" />
                             </div>
                            
                             
-                            <button type="submit" class="btn btn-default">Thêm </button>
+                            <button type="submit" class="btn btn-default">
+More </button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>

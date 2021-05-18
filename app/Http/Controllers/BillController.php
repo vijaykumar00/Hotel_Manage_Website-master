@@ -1,13 +1,13 @@
 <?php 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\DetailBill;
-use App\Reservation;
+use App\details_bill;
+use App\reservation;
 class BillController extends Controller
 {
 	public function getBill($id)
 	{
-		$bill=DetailBill::where('idReservation',$id)->get();
+		$bill=details_bill::where('idReservation',$id)->get();
         $reservation=Reservation::find($id);
 
 		return view('admin.bill.list',['bill'=>$bill,'reservation'=>$reservation]);
@@ -16,7 +16,7 @@ class BillController extends Controller
 
     public function Add($id)
     {
-        $reservation=Reservation::find($id);
+        $reservation=reservation::find($id);
         return view('admin.bill.add',['reservation'=>$reservation]);
     }
 
@@ -30,13 +30,13 @@ class BillController extends Controller
             
         ],
         [   
-            'content.required'=>"Bạn chưa nhập nội dung",
-            'price.required'=>"Bạn chưa nhập giá",
+            'content.required'=>"You did not enter content",
+            'price.required'=>"You have not entered a price",
            
            
         ]);
 
-        $bill=new DetailBill;
+        $bill=new details_bill;
         $bill->content=$request->content;
         $bill->price=$request->price;
         $bill->idReservation=$id;
@@ -46,14 +46,14 @@ class BillController extends Controller
      
 
 
-        return redirect('admin/bill/list/'.$id)->with('annoucement','Thêm bill thành công');
+        return redirect('admin/bill/list/'.$id)->with('annoucement','Successfully added bill');
     }
     public function Delete($id,$idReser)
     {
        
-        $bill=DetailBill::find($id);
+        $bill=details_bill::find($id);
         $bill->delete();
-        return redirect('admin/bill/list/'.$idReser)->with('annoucement','Xóa bill thành công');
+        return redirect('admin/bill/list/'.$idReser)->with('annoucement','Successfully deleted bill');
      }
      
 }	

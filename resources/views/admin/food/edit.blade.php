@@ -32,21 +32,22 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            
                             <div class="form-group">
-                                <label>Tên Món ăn</label>
+                                <label>The name of food</label>
                                 <input class="form-control" name="name" placeholder="Please Enter Món ăn Name" value="{{$food->name}}" />
                             </div>
                             <div class="form-group">
-                                <label>Miêu tả</label>
+                                <label>
+Describe</label>
                                 <input class="form-control" name="description" placeholder="Please Enter description" value="{{$food->description}}" />
                             </div>
                             <div class="form-group">
-                                <label>Giá</label>
+                                <label>Price</label>
                                 <input class="form-control" name="price" placeholder="Please Enter Price" value="{{$food->price}}" />
                             </div>
                              <div class="form-group">
-                                <label>Loại món ăn</label>
+                                <label>Type of dish</label>
                                 <select class="form-control" name="idCategory">
-                                    <label>Thể loại</label>
+                                    <label>Category</label>
                                     @foreach ($categoryFood as $cf)
                                     <option value="{{$cf->id}}" @if ($cf->id==$food->idCategory) {{"selected"}} @endif > {{$cf->name}}</option>
                                     @endforeach

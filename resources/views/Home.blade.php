@@ -122,9 +122,6 @@
             </a>
           </div>
           @endforeach
-          
-
-
         </div>
       </div>
     </section>
@@ -165,7 +162,6 @@
             </div>
             <!-- END slider -->
           </div>
-        
         </div>
       </div>
     </section>

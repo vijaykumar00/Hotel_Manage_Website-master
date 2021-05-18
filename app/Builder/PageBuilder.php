@@ -4,6 +4,7 @@ namespace App\Builder;
 use App\Http\Controllers\PageController;
 use App\Information;
 use App\About;
+use App\category_room;
 use App\CategoryRoom;
 use App\Description;
 use App\Slide;
@@ -22,7 +23,7 @@ class PageBuilder
 
 	public function setInfor()
 	{
-		$this->page->infor=Information::find(0);
+	$d=	$this->page->infor=Information::get()->first();
 		return $this;
 		
 	}
@@ -76,7 +77,7 @@ class PageBuilder
 
 	public function setCategory()
 	{
-		$this->page->category=CategoryRoom::all();
+		$this->page->category=category_room::all();
 		return $this;
 	}
 	public function getCategory()

@@ -21,9 +21,10 @@
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Tên Món Ăn</th>
-                                <th>Miêu tả</th>
-                                <th>Giá</th>
+                                <th>The name of food</th>
+                                <th>Describe</th>
+                                <th>
+Price</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>

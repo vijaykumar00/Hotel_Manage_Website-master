@@ -58,7 +58,7 @@
             <div class="flipper">
               <div class="front" style="background-image: url(images/person_3.jpg);">
                 <div class="box">
-                  <h2>Huỳnh Tấn Duy</h2>
+                  <h2>Crista </h2>
                   <p>President</p>
                 </div>
               </div>
@@ -83,7 +83,7 @@
             <div class="flipper">
               <div class="front" style="background-image: url(images/person_1.jpg);">
                 <div class="box">
-                  <h2>Huỳnh Thị Phương Duy</h2>
+                  <h2>Samili</h2>
                   <p>Business Manager</p>
                 </div>
               </div>
@@ -108,7 +108,7 @@
             <div class="flipper">
               <div class="front" style="background-image: url(images/person_2.jpg);">
                 <div class="box">
-                  <h2>Nguyễn Văn Vinh</h2>
+                  <h2>Pulkit</h2>
                   <p>Marketing Director</p>
                 </div>
               </div>

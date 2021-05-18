@@ -24,9 +24,9 @@ class AboutController extends Controller
             
         ],
         [
-            'body.required'=>"Bạn chưa nhập nội dung",
-            'image.required'=>"Bạn chưa nhập image",
-            'video.required'=>"Bạn chưa nhập video",
+            'body.required'=>"You did not enter content",
+            'image.required'=>"You have not imported an image",
+            'video.required'=>"You have not imported the video",
             
            
 
@@ -36,11 +36,8 @@ class AboutController extends Controller
         $about->body=$request->body;
         $about->image="images/" . $request->image->getClientOriginalName();
         $about->video=$request->video;
-    
         $about->save(); 
-
-
-        return redirect('admin/about/list')->with('annoucement','Sửa thông tin khách sạn thành công');
+        return redirect('admin/about/list')->with('annoucement','Successfully edited hotel information');
       
 	}
 }	

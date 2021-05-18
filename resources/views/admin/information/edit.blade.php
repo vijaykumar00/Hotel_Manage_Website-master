@@ -29,7 +29,8 @@
                             @csrf
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
-                                <label>Tên Khách Sạn</label>
+                                <label>
+Hotel Name</label>
                                 <input class="form-control" name="name"  value="{{$information->name }}" />
                             </div>
                              <div class="form-group">
@@ -41,11 +42,13 @@
                                 <input class="form-control" name="email"  value="{{$information->email }}" />
                             </div>
                              <div class="form-group">
-                                <label>Số điện thoại</label>
+                                <label>
+phone number</label>
                                 <input class="form-control" name="phone_number"  value="{{$information->phone_number }}" />
                             </div>
                             <div class="form-group">
-                                <label>Địa chỉ </label>
+                                <label>
+Address </label>
                                 <input class="form-control" name="address"  value="{{$information->address }}" />
                             </div>
                             

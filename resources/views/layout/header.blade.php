@@ -3,8 +3,6 @@
         <div class="row align-items-center">
           <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="#">{{$infor->name}}</a></div>
           <div class="col-6 col-lg-8">
-
-
             <div class="site-menu-toggle js-site-menu-toggle"  data-aos="fade">
               <span></span>
               <span></span>
@@ -21,15 +19,14 @@
                           <li><a href="rooms">Rooms</a></li>
                           <li><a href="about">About</a></li>
                           <li><a href="event">Events</a></li>
-                          
                           <li><a href="reservation/{1}">Reservation</a></li>
+                          <li><a href="admin/login">Admin Login</a></li>
                         </ul>
                       </div>
                     </div>
                   </div>
                 </nav>
               </div>
-            
           </div>
         </div>
       </div>

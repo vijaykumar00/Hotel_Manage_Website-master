@@ -1,17 +1,17 @@
 <?php 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Description;
+use App\description;
 class DescriptionController extends Controller
 {
 	public function getDescription()
 	{
-		$description=Description::all();
+		$description=description::all();
 		return view('admin.description.list',['description'=>$description]);
 	}
 	public function edit()
 	{
-		$description=Description::find(1);
+		$description=description::find(1);
 		return view('admin.description.edit',['description'=>$description]);
 	}
 	public function editPost(Request $request)
@@ -25,16 +25,16 @@ class DescriptionController extends Controller
             
         ],
         [
-            'room.required'=>"Bạn chưa nhập nội dung",
-            'photo.required'=>"Bạn chưa nhập photo",
-            'menu.required'=>"Bạn chưa nhập menu",
-            'event.required'=>"Bạn chưa nhập event",
+            'room.required'=>"You did not enter content",
+            'photo.required'=>"You have not imported photo",
+            'menu.required'=>"You have not entered the menu",
+            'event.required'=>"You have not entered the event yet",
             
            
 
         ]);
         
-        $description=Description::find(1);
+        $description=description::find(1);
         $description->room=$request->room;
         $description->photo=$request->photo;
         $description->menu=$request->menu;
@@ -43,7 +43,7 @@ class DescriptionController extends Controller
         $description->save(); 
 
 
-        return redirect('admin/description/list')->with('annoucement','Sửa thông tin khách sạn thành công');
+        return redirect('admin/description/list')->with('annoucement','Successfully edited hotel information');
       
 	}
 }	

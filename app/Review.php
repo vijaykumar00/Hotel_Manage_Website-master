@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class review extends Model
 {
-    //
-    protected $table="review";
+    protected $table="reviews";
 }

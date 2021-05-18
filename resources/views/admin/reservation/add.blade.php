@@ -32,43 +32,47 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            
                             <div class="form-group">
-                                <label>Tên phòng </label>
-                                <select class="form-control" name="idRoom">
-                                    <label>Tên phòng</label>
+                                <label>Room name </label>
+                                <select class="form-control" name="cc">
+                                    <label>Room name</label>
                                     @foreach ($room as $r)
                                     <option value="{{$r->id}}"  > {{$r->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Họ tên khách hàng</label>
-                                <input class="form-control" name="name" placeholder="Please Enter Price"  />
+                                <label>customer's full name</label>
+                                <input class="form-control" name="name" placeholder="Please Enter Name"  />
                             </div>
                             <div class="form-group">
-                                <label>Số điện thoại</label>
-                                <input class="form-control" name="phone" placeholder="Please Enter Price"  />
+                                <label>phone number</label>
+                                <input class="form-control" name="phone" placeholder="Please Enter Phone"  />
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input class="form-control" name="email" placeholder="Please Enter Price"  />
+                                <input class="form-control" name="email" placeholder="Please Enter Email"  />
                             </div>
                             <div class="form-group">
-                                <label>Ngày đến </label>
-                                <input type="date" class="form-control" name="DateIn" placeholder="Please Enter Price"  />
+                                <label>Arrival date </label>
+                                <input type="date" class="form-control" name="DateIn"   />
                             </div>
                             <div class="form-group">
-                                <label>Ngày đi</label>
-                                <input type="date" class="form-control" name="DateOut" placeholder="Please Enter Price"  />
+                                <label>Days to go</label>
+                                <input type="date" class="form-control" name="DateOut"  />
                             </div>
                             <div class="form-group">
-                                <label>Số lượng</label>
-                                <input class="form-control" name="Numbers" placeholder="Please Enter Price"  />
+                                <label>Amount</label>
+                                <input class="form-control" name="Numbers" placeholder="Number"  />
                             </div>
                             <div class="form-group">
                                 <label>Notes</label>
-                                <input class="form-control" name="Notes" placeholder="Please Enter Price"  />
+                                <input class="form-control" name="Notes" placeholder="Notes"  />
                             </div>
                            
+                            <div class="form-group">
+                                <label>Number</label>
+                                <input class="form-control" name="Number" placeholder="Please Enter Numbers"  />
+                            </div>
                             
                             <button type="submit" class="btn btn-default">Add </button>
                             <button type="reset" class="btn btn-default">Reset</button>

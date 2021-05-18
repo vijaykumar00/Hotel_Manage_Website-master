@@ -32,24 +32,30 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            
                             <div class="form-group">
-                                <label>Tên phòng </label>
+                                <label>
+Room name </label>
                                 <input class="form-control" name="name"  />
                             </div>
                             <div class="form-group">
-                                <label>Loại phòng</label>
+                                <label>
+Kind of room</label>
                                 <select class="form-control" name="idCategory">
-                                    <label>Loại phòng</label>
+                                    <label>
+Kind of room</label>
                                     @foreach ($categoryRoom as $cr)
                                     <option value="{{$cr->id}}" > {{$cr->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Tình trạng</label>
+                                <label>
+Status</label>
                                 <select class="form-control" name="status">
-                                    <label>Tình trạng</label>
-                                    <option value="1" > Trống</option>
-                                    <option value="0" > Đã được đặt</option>
+                                    <label>Status</label>
+                                    <option value="1" > 
+Empty</option>
+                                    <option value="0" > 
+Reserved</option>
                               
                                 </select>
                             </div>

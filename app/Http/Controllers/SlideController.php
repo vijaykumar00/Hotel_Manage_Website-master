@@ -1,17 +1,17 @@
 <?php 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Slide;
+use App\slide;
 class SlideController extends Controller
 {
 	public function getSlide()
 	{
-		$slide=Slide::all();
+		$slide=slide::all();
 		return view('admin.slide.list',['slide'=>$slide]);
 	}
 	public function Edit($id)
 	{
-		$slide=Slide::find($id);
+		$slide=slide::find($id);
 		return view('admin.slide.edit',['slide'=>$slide]);
 	}
 	public function EditPost(Request $request,$id)
@@ -24,11 +24,11 @@ class SlideController extends Controller
         ],
         [   
             
-            'caption.required'=>"Bạn chưa nhập caption hình ảnh",
+            'caption.required'=>"You have not entered image caption",
            
         ]);
         
-        $slide=Slide::find($id);
+        $slide=slide::find($id);
        // $slide->link=$request->link;
         $slide->caption=$request->caption;
         $slide->link="images/" . $request->image->getClientOriginalName();
@@ -37,7 +37,7 @@ class SlideController extends Controller
         $slide->save(); 
 
 
-        return redirect('admin/slide/list')->with('annoucement','Sửa thông tin slide thành công');
+        return redirect('admin/slide/list')->with('annoucement','Successfully edited slide information');
       
 	}
 
@@ -54,12 +54,13 @@ class SlideController extends Controller
             
         ],
         [   
-            'link.required'=>"Bạn chưa nhập link hình ảnh",
-            'caption.required'=>"Bạn chưa nhập caption hình ảnh",
+            'link.required'=>"You have not entered image link",
+            'caption.required'=>"
+            You have not entered image caption",
            
         ]);
         
-        $slide=new Slide;
+        $slide=new slide;
         $slide->link=$request->link;
         $slide->caption=$request->caption;
       
@@ -68,14 +69,15 @@ class SlideController extends Controller
         $slide->save(); 
 
 
-        return redirect('admin/slide/list')->with('annoucement','Thêm slide thành công');
+        return redirect('admin/slide/list')->with('annoucement','Successfully added slide');
       
     }
     public function Delete($id)
     {
-        $slide=Slide::find($id);
+        $slide=slide::find($id);
         $slide->delete();
-        return redirect('admin/slide/list')->with('annoucement','Xóa slide thành công');
+        return redirect('admin/slide/list')->with('annoucement','
+        Successfully deleted the slide');
      }
 
 }	

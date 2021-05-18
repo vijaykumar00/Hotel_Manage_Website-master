@@ -32,15 +32,15 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                            
                             <div class="form-group">
-                                <label>Tên Món ăn</label>
-                                <input class="form-control" name="name" placeholder="Please Enter Món ăn Name" />
+                                <label>The name of food</label>
+                                <input class="form-control" name="name" placeholder="Please Enter food Name" />
                             </div>
                             <div class="form-group">
-                                <label>Miêu tả</label>
+                                <label>Describe</label>
                                 <input class="form-control" name="description" placeholder="Please Enter description" />
                             </div>
                             <div class="form-group">
-                                <label>Giá</label>
+                                <label>Price</label>
                                 <input class="form-control" name="price" placeholder="Please Enter Price" />
                             </div>
                             

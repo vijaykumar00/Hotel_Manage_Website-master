@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Slide extends Model
+class slide extends Model
 {
-    //
-    protected $table="slide";
+    protected $table="slides";
     public $timestamps = false;
 }
